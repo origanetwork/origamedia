@@ -19,12 +19,7 @@ export interface Blog {
 }
 
 
-interface myBlogs {
-    id: string;
-    title: string;
-    slug: string;
-    
-}
+
 
 export const blogs: Blog[] = [
     {

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Plus, Send } from "lucide-react";
 import Image from "next/image";
-import Footer from "@/components/Footer";
+
 
 export default function PerformancePage() {
     const router = useRouter();

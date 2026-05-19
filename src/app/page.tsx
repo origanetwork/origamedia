@@ -14,7 +14,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import ServTemp from "@/components/ServTemp";
+
 
 export default function Home() {
    return (
@@ -23,7 +23,7 @@ export default function Home() {
          <Stats />
          <About />
          <Clients />
-         {/* <ServTemp /> */}
+
          <Services />
          <OurApproach />
          <Portfolio />

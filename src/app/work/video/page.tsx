@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 import { projects, Project } from '@/data/projects';
 
 export default function VideoWorkPage() {
@@ -82,9 +83,10 @@ export default function VideoWorkPage() {
                             <div className="absolute inset-2 border-2 border-white bg-black overflow-hidden shadow-2xl">
                                 {/* Thumbnail Background */}
                                 <div className="absolute inset-0">
-                                    <img
+                                    <Image
                                         src={project.image}
                                         alt={project.title}
+                                        fill
                                         className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:grayscale"
                                     />
                                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function BlogDetailPage() {
     const params = useParams();
-    const router = useRouter();
+
     const slug = params?.slug;
 
     const blog = blogs.find((b) => b.slug === slug);
@@ -99,7 +99,7 @@ export default function BlogDetailPage() {
                                     return (
                                         <blockquote key={index} className="pl-8 border-l-4 border-white/20 py-4 my-12">
                                             <p className="text-2xl md:text-3xl font-display italic text-white/90 leading-tight">
-                                                "{section.content}"
+                                                &ldquo;{section.content}&rdquo;
                                             </p>
                                         </blockquote>
                                     );

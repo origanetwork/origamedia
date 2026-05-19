@@ -93,8 +93,9 @@ export default function Hero() {
             {/* 3D Hybrid Concept Layer */}
             <div className="absolute inset-0 z-0">
                 <Canvas>
+                    <color attach="background" args={["#000000"]} />
                     <PerspectiveCamera makeDefault position={[0, 0, 12]} fov={40} />
-                    <Environment files="/studio_small_03_1k.hdr" />
+                    <Environment preset="studio" />
                     <Suspense fallback={null}>
                         <DataCube />
                     </Suspense>
