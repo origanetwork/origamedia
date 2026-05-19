@@ -37,7 +37,7 @@ export default function Header() {
       className="sticky top-0 left-0 w-full z-50 bg-[#141414] text-white overflow-hidden pointer-events-none"
       variants={{
         closed: { height: 80, transition: { type: "spring", stiffness: 300, damping: 30 } },
-        open: { height: "40vh", transition: { type: "spring", stiffness: 100, damping: 20 } },
+        open: { height: "35vh", transition: { type: "spring", stiffness: 100, damping: 20 } },
       }}
     >
       <div className="pointer-events-auto h-full w-full">
@@ -155,13 +155,13 @@ export default function Header() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="flex-1 flex flex-col items-center justify-start w-full pt-2"
+                className="flex-1 flex flex-col items-center justify-start w-full pt-2 lg:-mt-16"
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1 }}
-                  className="relative w-full max-w-[70vw] h-[15vh] md:h-[20vh] mb-[-24px]"
+                  className="relative w-full max-w-[70vw] h-[15vh] lg:h-[18vh] mb-2 lg:mb-2"
                 >
                   <Image
                     src="/logo/origa.png"
