@@ -106,6 +106,12 @@ export default function About() {
                                 fill
                                 className="object-contain opacity-80"
                             />
+                             {/* <Image
+                                src="/home/about.jpg"
+                                alt="Origa Media Logo"
+                                fill
+                                className="object-contain opacity-80"
+                            /> */}
                             {/* Subtle reflection/glow for the logo */}
                             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent pointer-events-none rounded-full blur-2xl opacity-20" />
                         </div>
