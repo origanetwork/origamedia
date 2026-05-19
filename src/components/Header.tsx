@@ -37,7 +37,7 @@ export default function Header() {
       className="sticky top-0 left-0 w-full z-50 bg-[#141414] text-white overflow-hidden pointer-events-none"
       variants={{
         closed: { height: 80, transition: { type: "spring", stiffness: 300, damping: 30 } },
-        open: { height: "35vh", transition: { type: "spring", stiffness: 100, damping: 20 } },
+        open: { height: "40vh", transition: { type: "spring", stiffness: 100, damping: 20 } },
       }}
     >
       <div className="pointer-events-auto h-full w-full">
@@ -161,7 +161,7 @@ export default function Header() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1 }}
-                  className="relative w-full max-w-[70vw] h-[15vh] lg:h-[18vh] mb-2 lg:mb-2"
+                  className="relative w-full max-w-[70vw] h-[12vh] lg:h-[18vh] mb-2 lg:mb-2"
                 >
                   <Image
                     src="/logo/origa.png"
@@ -176,7 +176,7 @@ export default function Header() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="mt-6 md:mt-4 flex flex-wrap justify-center gap-x-12 gap-y-4 text-sm font-bold tracking-[0.3em] uppercase opacity-60"
+                  className="mt-4 flex flex-wrap justify-center gap-x-8 gap-y-3 text-[11px] md:text-sm font-bold tracking-[0.3em] uppercase opacity-60 px-4"
                 >
                   {NAV_LINKS.map((link) => (
                     <Link
