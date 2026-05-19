@@ -22,22 +22,22 @@ const navLinks = [
 
 export default function Footer() {
     return (
-        <footer className="bg-white text-black py-20 md:py-10 font-sans border-t border-gray-100 overflow-x-hidden">
+        <footer className="bg-white text-black py-12 md:py-10 font-sans border-t border-gray-100 overflow-x-hidden">
             <div className="container mx-auto px-6 md:px-16">
-                <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-20">
+                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 lg:gap-16 mb-12 lg:mb-20">
                     {/* Left Section: Connect */}
-                    <div className="flex flex-col gap-8 order-2 lg:order-1">
-                        <div>
+                    <div className="flex flex-col items-center lg:items-start gap-6 lg:gap-8 order-2 lg:order-1 text-center lg:text-left">
+                        <div className="flex flex-col items-center lg:items-start">
                             <p className="text-xl md:text-2xl font-light mb-2">Let&apos;s Connect</p>
                             <a
                                 href="mailto:info@origanetworks.com"
-                                className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight hover:opacity-70 transition-opacity break-all sm:break-normal"
+                                className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight hover:opacity-70 transition-opacity break-all sm:break-normal text-center lg:text-left"
                             >
                                 info@origanetworks.com
                             </a>
                         </div>
 
-                        <div className="flex gap-4">
+                        <div className="flex justify-center lg:justify-start gap-4">
                             {socialLinks.map((social, idx) => (
                                 <a
                                     key={idx}
@@ -51,23 +51,23 @@ export default function Footer() {
                     </div>
 
                     {/* Right Section: Large Typography */}
-                    <div className="text-left lg:text-right order-1 lg:order-2 w-full lg:w-auto flex flex-col items-start lg:items-end">
-                        <div className="relative w-full max-w-[400px] md:max-w-[600px] lg:max-w-[800px] h-24 sm:h-32 md:h-40 mb-4">
+                    <div className="text-center lg:text-right order-1 lg:order-2 w-full lg:w-auto flex flex-col items-center lg:items-end">
+                        <div className="relative w-full max-w-[400px] h-16 sm:h-32 md:h-40 mb-4">
                             <Image
                                 src="/logo/black-logo.png"
                                 alt="Origa Media Logo"
                                 fill
-                                className="object-contain object-left lg:object-right"
+                                className="object-contain object-center lg:object-right"
                             />
                         </div>
                         <p className="text-lg sm:text-2xl md:text-3xl font-medium tracking-tight">
-                            Creative , Strategic, Result-Driven
+                            Creative, Strategic, Result-Driven
                         </p>
                     </div>
                 </div>
 
                 {/* Navigation Row */}
-                <div className="flex flex-wrap gap-x-6 sm:gap-x-12 gap-y-4 mb-20 border-t border-gray-100 pt-10">
+                <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 sm:gap-x-12 gap-y-4 mb-10 lg:mb-20 border-t border-gray-100 pt-10">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
