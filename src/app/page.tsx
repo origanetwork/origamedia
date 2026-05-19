@@ -1,4 +1,9 @@
-import Hero from "@/components/Hero";
+"use client";
+import dynamic from "next/dynamic";
+const Hero = dynamic(() => import("@/components/Hero"), {
+   ssr: false,
+   loading: () => <div className="h-screen bg-black" />
+});
 import Stats from "@/components/Stats";
 import About from "@/components/About";
 import Clients from "@/components/Clients";
@@ -9,6 +14,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServTemp from "@/components/ServTemp";
 
 export default function Home() {
    return (
@@ -17,6 +23,7 @@ export default function Home() {
          <Stats />
          <About />
          <Clients />
+         {/* <ServTemp /> */}
          <Services />
          <OurApproach />
          <Portfolio />

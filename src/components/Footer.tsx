@@ -2,11 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const socialLinks = [
     { icon: FaFacebookF, href: "#" },
-    { icon: FaLinkedinIn, href: "#" },
+    { icon: FaLinkedinIn, href: "https://www.linkedin.com/company/116784126/admin/dashboard/" },
     { icon: FaXTwitter, href: "#" },
     { icon: FaInstagram, href: "https://instagram.com/origamedia" }
 ];
@@ -15,14 +16,13 @@ const navLinks = [
     { name: "Services", href: "#services" },
     { name: "Works", href: "#works" },
     { name: "Clients", href: "#stats" },
-    { name: "Awards", href: "#" },
     { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" }
+    { name: "Contact", href: "/contact" }
 ];
 
 export default function Footer() {
     return (
-        <footer className="bg-white text-black py-20 md:py-10 font-sans border-t border-gray-100">
+        <footer className="bg-white text-black py-20 md:py-10 font-sans border-t border-gray-100 overflow-x-hidden">
             <div className="container mx-auto px-6 md:px-16">
                 <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-20">
                     {/* Left Section: Connect */}
@@ -30,10 +30,10 @@ export default function Footer() {
                         <div>
                             <p className="text-xl md:text-2xl font-light mb-2">Let&apos;s Connect</p>
                             <a
-                                href="mailto:hello@origamedia.com"
+                                href="mailto:info@origanetworks.com"
                                 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight hover:opacity-70 transition-opacity break-all sm:break-normal"
                             >
-                                hello@origamedia.com
+                                info@origanetworks.com
                             </a>
                         </div>
 
@@ -51,12 +51,17 @@ export default function Footer() {
                     </div>
 
                     {/* Right Section: Large Typography */}
-                    <div className="text-left lg:text-right order-1 lg:order-2 w-full lg:w-auto">
-                        <h2 className="text-5xl sm:text-7xl md:text-9xl font-bold tracking-tighter leading-none mb-4 font-display">
-                            Origa&Media.
-                        </h2>
+                    <div className="text-left lg:text-right order-1 lg:order-2 w-full lg:w-auto flex flex-col items-start lg:items-end">
+                        <div className="relative w-full max-w-[400px] md:max-w-[600px] lg:max-w-[800px] h-24 sm:h-32 md:h-40 mb-4">
+                            <Image
+                                src="/logo/black-logo.png"
+                                alt="Origa Media Logo"
+                                fill
+                                className="object-contain object-left lg:object-right"
+                            />
+                        </div>
                         <p className="text-lg sm:text-2xl md:text-3xl font-medium tracking-tight">
-                            Strategy, Performance & Production.
+                            Creative , Strategic, Result-Driven
                         </p>
                     </div>
                 </div>
@@ -82,8 +87,8 @@ export default function Footer() {
                     </div>
 
                     <div className="flex gap-10">
-                        <span className="text-black">Kerala</span>
-                        <span>Melattur</span>
+                        <span className="text-black">Kochi</span>
+                        <span>Malappuram</span>
                     </div>
 
                     <div className="flex items-center gap-2">

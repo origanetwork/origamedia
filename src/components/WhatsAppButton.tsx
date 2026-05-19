@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function WhatsAppButton() {
-    const whatsappNumber = "+919876543210"; // Placeholder number
+    const whatsappNumber = "+918129164869";
 
     return (
         <motion.a

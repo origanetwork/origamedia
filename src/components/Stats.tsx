@@ -40,7 +40,7 @@ export default function Stats() {
         <section className="bg-black text-white py-16 md:py-24 overflow-hidden border-t border-white/5">
             <div className="container mx-auto px-6 md:px-16">
                 {/* Main Text Content */}
-                <div className="text-center mb-12 max-w-4xl mx-auto">
+                <div className="text-center mb-22 max-w-4xl mx-auto">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -53,23 +53,28 @@ export default function Stats() {
                 </div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 text-center">
+                <div className="flex flex-row md:grid md:grid-cols-3 items-center justify-between text-center">
                     {stats.map((stat, i) => (
-                        <motion.div
-                            key={stat.label}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.2, duration: 0.8 }}
-                            className="space-y-2"
-                        >
-                            <p className="text-6xl md:text-7xl font-bold tracking-tighter text-gray-400">
-                                <Counter value={stat.value} suffix={stat.suffix} />
-                            </p>
-                            <p className="text-md md:text-xl text-white uppercase tracking-widest font-medium">
-                                {stat.label}
-                            </p>
-                        </motion.div>
+                        <React.Fragment key={stat.label}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.2, duration: 0.8 }}
+                                className="flex-1 space-y-1 md:space-y-4 px-2"
+                            >
+                                <p className="text-3xl md:text-7xl font-bold tracking-tighter text-white">
+                                    <Counter value={stat.value} suffix={stat.suffix} />
+                                </p>
+                                <p className="text-[9px] md:text-xl text-white/40 uppercase tracking-widest font-medium whitespace-nowrap">
+                                    {stat.label}
+                                </p>
+                            </motion.div>
+                            {/* Mobile Divider */}
+                            {i < stats.length - 1 && (
+                                <div className="h-8 w-[1px] bg-white/10 shrink-0 md:hidden" />
+                            )}
+                        </React.Fragment>
                     ))}
                 </div>
             </div>

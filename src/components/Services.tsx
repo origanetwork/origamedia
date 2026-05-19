@@ -1,34 +1,46 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 const services = [
     {
         id: 1,
+        slug: "digital-marketing",
         title: "Digital Marketing",
         description: "Performance-driven campaigns across Meta, Google, and other platforms designed to generate leads and maximize ROI.",
-        bgImage: "/services/1.png"
+        bgImage: "/services/digital-m.jpg"
     },
     {
         id: 2,
+        slug: "branding-and-strategy",
         title: "Branding & Strategy",
         description: "We create strong brand identities and positioning strategies that stand out in competitive markets.",
-        bgImage: "/services/branding.jpg"
+        bgImage: "/services/Brand.jpg"
     },
     {
         id: 3,
-        title: "Content Production",
-        description: "High-quality video production, ad creatives, and visual storytelling tailored for digital platforms.",
-        bgImage: "/services/2.png"
+        slug: "graphics-designing",
+        title: "Graphics Designing",
+        description: "Creative visual identities and social media assets that capture attention and build brand trust.",
+        bgImage: "/services/graphical.jpg"
     },
     {
         id: 4,
-        title: "Social Media Management",
-        description: "Consistent and engaging content that builds audience trust and brand presence.",
-        bgImage: "/services/social-media.jpg"
+        slug: "video-production",
+        title: "Video Production",
+        description: "Premium cinematic storytelling and marketing films that drive engagement and conversions.",
+        bgImage: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=2070"
+    },
+    {
+        id: 5,
+        slug: "content-production",
+        title: "Content Production",
+        description: "High-quality visual and written content designed to tell your brand&apos;s unique story.",
+        bgImage: "/services/contentt.jpg"
     }
 ];
 
@@ -52,7 +64,7 @@ export default function Services() {
             className="relative w-full bg-white text-black overflow-hidden py-16 md:py-24 border-t border-black/5"
             onMouseLeave={() => setHoveredIndex(null)}
         >
-            {/* Background Image Layer */}
+            {/* Background Image on Hover */}
             <AnimatePresence>
                 {hoveredIndex !== null && (
                     <motion.div
@@ -60,18 +72,18 @@ export default function Services() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.6, ease: "easeInOut" }}
-                        className="absolute inset-0 z-0 pointer-events-none"
+                        transition={{ duration: 0.5 }}
+                        className="absolute inset-0 w-full h-full z-0"
                     >
                         <Image
                             src={services[hoveredIndex].bgImage}
                             alt={services[hoveredIndex].title}
                             fill
-                            className="object-cover opacity-50"
+                            className="object-cover"
                             quality={100}
+                            priority
                         />
-                        {/* Soft white gradient to ensure text readability without hiding the image */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent" />
+                        <div className="absolute inset-0 bg-black/60" />
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -88,23 +100,24 @@ export default function Services() {
                     {/* Left: Services List */}
                     <div className="w-full lg:w-1/2 flex flex-col space-y-4 md:space-y-8">
                         {services.map((service, index) => (
-                            <div
+                            <Link
                                 key={service.id}
-                                className="group cursor-pointer flex flex-col items-start w-full"
+                                href={`/services/${service.slug}`}
+                                className="group cursor-pointer flex flex-col items-start w-full no-underline"
                                 onMouseEnter={() => setHoveredIndex(index)}
                             >
-                                <div className={`flex items-center space-x-6 text-2xl md:text-4xl font-display font-medium transition-colors duration-300 ${hoveredIndex !== null ? (hoveredIndex === index ? 'text-black' : 'text-black/20') : 'text-black'}`}>
+                                <div className={`flex items-center space-x-6 text-3xl md:text-5xl font-display font-medium transition-colors duration-300 ${hoveredIndex !== null ? (hoveredIndex === index ? 'text-white' : 'text-white/20') : 'text-black'}`}>
                                     <span>{service.title}</span>
-                                    <ArrowRight className={`w-6 h-6 md:w-8 md:h-8 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ${hoveredIndex === index ? 'text-black' : ''}`} />
+                                    <ArrowRight className={`w-6 h-6 md:w-8 md:h-8 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ${hoveredIndex === index ? 'text-white' : ''}`} />
                                 </div>
                                 <div
                                     className={`overflow-hidden transition-all duration-500 ease-in-out ${hoveredIndex === index ? 'max-h-40 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'}`}
                                 >
-                                    <p className={`text-base md:text-xl font-medium leading-relaxed max-w-xl transition-colors duration-300 ${hoveredIndex === index ? 'text-gray-800' : 'text-gray-600'}`}>
+                                    <p className={`text-base md:text-xl font-medium leading-relaxed max-w-xl transition-colors duration-300 ${hoveredIndex === index ? 'text-white/80' : 'text-gray-600'}`}>
                                         {service.description}
                                     </p>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 
@@ -118,7 +131,7 @@ export default function Services() {
                                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                                     exit={{ opacity: 0, y: -40, filter: "blur(4px)" }}
                                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                    className={`text-4xl sm:text-5xl md:text-6xl lg:text-[8vw] font-display font-bold leading-none tracking-tighter absolute right-0 whitespace-nowrap transition-colors duration-500 ${hoveredIndex !== null ? 'text-black opacity-10' : 'text-black opacity-100'}`}
+                                    className={`text-6xl sm:text-5xl md:text-6xl lg:text-[8vw] font-display font-bold leading-none tracking-tighter absolute right-0 whitespace-nowrap transition-colors duration-500 ${hoveredIndex !== null ? 'text-white opacity-10' : 'text-black opacity-100'}`}
                                 >
                                     {rotatingTexts[textIndex]}.
                                 </motion.h3>
@@ -131,3 +144,6 @@ export default function Services() {
         </section>
     );
 }
+
+
+

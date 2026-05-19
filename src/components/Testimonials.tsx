@@ -1,44 +1,41 @@
 "use client";
-
-import React from "react";
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
 import Image from "next/image";
 
 const testimonials = [
     {
-        name: "Arsh Navas",
-        role: "Chief Brand Officer",
-        company: "Gatezone Transport",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop",
+        name: "VINOD KUMAR",
+        role: "General Manager",
+        company: "Aman Enterprise",
+        image: "/testmonial/t1.png",
         quote: "Origa Media helped us scale our leads consistently."
     },
     {
-        name: "Ashik",
-        role: "Marketing Director",
-        company: "Mr Alfred UAE",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop",
+        name: "JAYASANKAR T.K",
+        role: "ManagingDirector",
+        company: "Valluvanad Matrimonial",
+        image: "/testmonial/t2.jpg",
         quote: "Creative, strategic, and result-driven team."
     },
     {
-        name: "Salman Thorop",
+        name: "Jinu Sunil",
         role: "Founder & CEO",
-        company: "Duvolks",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1770&auto=format&fit=crop",
+        company: "Mindra Clinic",
+        image: "/testmonial/t3.jpeg",
         quote: "They understand the market dynamics perfectly."
     },
     {
-        name: "Jasim SM",
-        role: "CEO",
-        company: "Bosq Ergonomic Living",
-        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop",
+        name: "Mansoor VP",
+        role: "Co-Partner",
+        company: "Dezert Makeovers",
+        image: "/testmonial/t4.png",
         quote: "Highly recommended for performance marketing."
     }
 ];
 
 export default function Testimonials() {
     return (
-        <section className="py-16 md:py-24 bg-black overflow-hidden border-t border-white/5">
+        <section className="py-10 md:py-24 bg-black overflow-clip border-t border-white/5">
             <div className="container mx-auto px-6 md:px-16">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -50,7 +47,54 @@ export default function Testimonials() {
                     What Our Clients Say
                 </motion.h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Mobile Stacking Cards Layout */}
+                <div className="md:hidden space-y-24 pb-10">
+                    {testimonials.map((testimonial, idx) => (
+                        <motion.div
+                            key={testimonial.name}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            className="group sticky top-28 will-change-transform"
+                            style={{ zIndex: idx + 1 }}
+                        >
+                            <div className="relative aspect-square overflow-hidden rounded-[2.5rem] border-2 border-white shadow-2xl flex flex-col justify-end p-10">
+                                {/* Image Background */}
+                                <Image
+                                    src={testimonial.image}
+                                    alt={testimonial.name}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                                />
+
+                                {/* Black Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-[5]" />
+
+                                <div className="relative z-10 w-full">
+                                    <p className="text-xl md:text-3xl text-white font-medium italic leading-relaxed mb-6 font-display">
+                                        &ldquo;{testimonial.quote}&rdquo;
+                                    </p>
+                                    <div className="space-y-2">
+                                        <h3 className="text-2xl font-bold text-white tracking-tight">
+                                            {testimonial.name}
+                                        </h3>
+                                        <div className="flex flex-col gap-1">
+                                            <p className="text-sm font-semibold text-white/80">
+                                                {testimonial.role}
+                                            </p>
+                                            <p className="text-[10px] uppercase tracking-[0.3em] text-white/60 font-bold">
+                                                {testimonial.company}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Desktop Grid Layout */}
+                <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
                     {testimonials.map((testimonial, idx) => (
                         <motion.div
                             key={testimonial.name}
@@ -58,45 +102,46 @@ export default function Testimonials() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1, duration: 0.8 }}
-                            className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-900 border border-white"
+                            className="group relative aspect-[3/4] overflow-hidden rounded-2xl border-2 border-white/50 hover:border-white transition-all duration-500 shadow-xl"
                         >
                             {/* Client Image background */}
                             <Image
                                 src={testimonial.image}
                                 alt={testimonial.name}
                                 fill
-                                className="object-cover group-hover:scale-105 transition-all duration-700 opacity-80 group-hover:opacity-100"
+                                className="object-cover group-hover:scale-105 transition-all duration-700"
                                 quality={100}
                             />
 
-                            {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
+                            {/* Black Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
                             {/* Content */}
                             <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                                <p className="text-sm md:text-base text-white font-medium italic leading-relaxed mb-6">
+                                <p className="text-lg text-white font-bold font-medium italic leading-relaxed mb-6">
                                     &ldquo;{testimonial.quote}&rdquo;
                                 </p>
                                 <div className="space-y-1">
                                     <h3 className="text-xl font-bold text-white tracking-tight">
                                         {testimonial.name}
                                     </h3>
-                                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                                    <div className="flex flex-col gap-1">
                                         <p className="text-xs font-semibold text-white/80">
                                             {testimonial.role}
                                         </p>
-                                        <span className="hidden sm:inline text-white/40">•</span>
                                         <p className="text-[10px] uppercase tracking-widest text-white/60 font-bold">
                                             {testimonial.company}
                                         </p>
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Hover Quote Tooltip or similar would be nice, but we'll stick to image style */}
                         </motion.div>
                     ))}
                 </div>
+
+
+
+
             </div>
         </section>
     );

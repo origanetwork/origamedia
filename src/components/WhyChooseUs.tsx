@@ -43,18 +43,27 @@ const reasons = [
 ];
 
 export default function WhyChooseUs() {
+    const [activeIndex, setActiveIndex] = React.useState(0);
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveIndex((prev) => (prev + 1) % reasons.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section className="relative py-16 md:py-24 bg-black overflow-hidden border-t border-white/5 font-display">
             {/* Background Decorative Element */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[1000px] h-[1000px] bg-gradient-to-br from-white/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
 
             <div className="container mx-auto px-6 md:px-16 relative z-10">
-                <div className="max-w-4xl mb-12 md:mb-20">
+                <div className="max-w-4xl mb-12 md:mb-24 text-center md:text-left mx-auto md:mx-0">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="flex items-center gap-4 mb-6"
+                        className="flex items-center justify-center md:justify-start gap-4 mb-6"
                     >
                         <div className="h-[1px] w-12 bg-white/20" />
                         <span className="text-xs font-bold tracking-[0.5em] uppercase text-white/40">
@@ -67,13 +76,58 @@ export default function WhyChooseUs() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-5xl md:text-6xl font-medium text-white tracking-tighter leading-[0.9]"
+                        className="text-5xl md:text-6xl lg:text-7xl font-medium text-white tracking-tighter leading-[0.9]"
                     >
                         Why <span className="opacity-40 italic">Origa</span> Media.
                     </motion.h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+                {/* Mobile Auto-sliding Carousel */}
+                <div className="md:hidden relative h-[400px] flex items-center justify-center">
+                    <div className="absolute inset-0 w-full rounded-[2rem] h-full">
+                        {reasons.map((reason, index) => (
+                            <motion.div
+                                key={reason.title}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{
+                                    opacity: activeIndex === index ? 1 : 0,
+                                    scale: activeIndex === index ? 1 : 0.95,
+                                    pointerEvents: activeIndex === index ? "auto" : "none"
+                                }}
+                                transition={{ duration: 0.5 }}
+                                className={`absolute inset-0 p-8 rounded-[3.5rem] bg-white/[0.02] border-2 border-white flex flex-col items-center justify-center text-center`}
+                            >
+                                <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/5 rounded-full blur-3xl" />
+
+                                <div className="relative z-10">
+                                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 mx-auto border border-white/10 shadow-2xl">
+                                        <reason.icon className="w-6 h-6 text-white" />
+                                    </div>
+
+                                    <h3 className="text-3xl font-medium text-white mb-6 leading-tight">
+                                        {reason.title}
+                                    </h3>
+
+                                    <p className="text-lg text-gray-400 font-light leading-relaxed max-w-sm px-4">
+                                        {reason.description}
+                                    </p>
+                                </div>
+
+                                <div className="flex gap-2 mt-10 relative z-10">
+                                    {reasons.map((_, i) => (
+                                        <div
+                                            key={i}
+                                            className={`h-1.5 rounded-full transition-all duration-500 ${activeIndex === i ? "w-8 bg-white" : "w-2 bg-white/20"}`}
+                                        />
+                                    ))}
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Desktop Grid Layout */}
+                <div className="hidden md:grid grid-cols-1 md:grid-cols-12 gap-4">
                     {reasons.map((reason, index) => (
                         <motion.div
                             key={reason.title}
@@ -81,7 +135,7 @@ export default function WhyChooseUs() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.8 }}
-                            className={`${reason.gridClass} group relative p-6 md:p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-white/20 hover:bg-white/[0.04] transition-all duration-700 overflow-hidden flex flex-col justify-between min-h-[250px]`}
+                            className={`${reason.gridClass} group relative border-1 border-white/50  p-6 md:p-8 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/[0.04] transition-all duration-700 overflow-hidden flex flex-col justify-between min-h-[250px]`}
                         >
                             {/* Card Glow */}
                             <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-all duration-700" />

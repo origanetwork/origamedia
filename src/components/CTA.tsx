@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageSquare } from "lucide-react";
 
 export default function CTA() {
     return (
-        <section className="relative py-16 md:py-24 bg-black overflow-hidden font-display border-t border-white/5">
+        <section className="relative py-10 md:py-24 bg-black overflow-hidden font-display border-t border-white/5">
             {/* Dynamic Background Elements */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-[120px]" />
@@ -20,7 +19,7 @@ export default function CTA() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-5xl md:text-7xl font-medium text-white mb-8"
+                        className="text-4xl md:text-7xl font-medium text-white mb-8"
                     >
                         Let&apos;s Build Something
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40 italic">
@@ -47,7 +46,7 @@ export default function CTA() {
                     >
                         {/* Primary CTA */}
                         <a
-                            href="mailto:hello@origamedia.com"
+                            href="mailto:info@origanetworks.com"
                             className="group relative px-8 py-5 bg-white text-black font-bold uppercase tracking-[0.2em] text-sm overflow-hidden transition-all duration-300 hover:pr-12"
                         >
                             <span className="relative z-10 flex items-center gap-2">
@@ -59,7 +58,7 @@ export default function CTA() {
 
                         {/* Secondary CTA */}
                         <a
-                            href="#contact"
+                            href="/contact"
                             className="group flex items-center gap-3 px-8 py-5 border border-white/20 text-white font-bold uppercase tracking-[0.2em] text-sm hover:bg-white/5 transition-all duration-300"
                         >
                             <MessageSquare className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity" />
@@ -68,7 +67,6 @@ export default function CTA() {
                     </motion.div>
                 </div>
             </div>
-
             {/* Subtle bottom border highlight */}
             <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         </section>

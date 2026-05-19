@@ -17,7 +17,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "ORIGA Media - We Build Brands That Perform",
   description: "A digital marketing and production studio by Origa Networks—focused on strategy, creativity, and measurable growth.",
+  icons: {
+    icon: "/logo/logo-black.jpeg",
+  },
 };
+
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";

@@ -2,27 +2,32 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-const clientLogos = [
-    { name: "Brand One" },
-    { name: "Brand Two" },
-    { name: "Brand Three" },
-    { name: "Brand Four" },
-    { name: "Brand Five" },
-    { name: "Brand Six" },
-    { name: "Brand Seven" },
-    { name: "Brand Eight" },
-    { name: "Brand Nine" },
-    { name: "Brand Ten" },
-    { name: "Brand Eleven" },
-    { name: "Brand Twelve" },
+interface ClientLogo {
+    name: string;
+    logo: string;
+}
+
+const clientLogos: ClientLogo[] = [
+    { name: "Ideal", logo: "/partners/ideal.png" },
+    { name: "Midas", logo: "/partners/midas.png" },
+    { name: "Pro Tech", logo: "/partners/pro-tech.png" },
+    { name: "Mindra", logo: "/partners/mindra.png" },
+    { name: "Malhar", logo: "/partners/malhar.png" },
+    { name: "Najma", logo: "/partners/najma.png" },
+    { name: "Kinathiyil", logo: "/partners/kinath.png" },
+    { name: "Hilife", logo: "/partners/Hilife.png" },
+    { name: "D-dot", logo: "/partners/D-dot.png" },
+    { name: "Pips", logo: "/partners/pips.png" },
+    { name: "Dezert", logo: "/partners/dezert.png" },
 ];
 
 export default function Clients() {
     return (
         <section className="py-16 md:py-24 bg-black overflow-hidden border-t border-white/5">
-            <div className="container mx-auto px-6 md:px-16 mb-16">
-                <div className="max-w-3xl">
+            <div className="container mx-auto px-6 md:px-16 mb-16 text-center md:text-left">
+                <div className="max-w-3xl mx-auto md:mx-0">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -30,31 +35,36 @@ export default function Clients() {
                         transition={{ duration: 0.8 }}
                         className="text-4xl md:text-6xl font-display font-medium text-white mb-6 tracking-tight"
                     >
-                        Brands We Work With
+                        Trusted by industry leaders
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.1 }}
-                        className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-2xl"
+                        className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto md:mx-0"
                     >
-                        We collaborate with businesses across industries—from local brands to growing enterprises.
+                        We partner with ambitious brands to define their digital future.
                     </motion.p>
                 </div>
             </div>
 
-            {/* Logo Ticker */}
             <div className="relative flex overflow-hidden py-10">
-                <div className="flex animate-marquee whitespace-nowrap gap-12 md:gap-24">
-                    {[...clientLogos, ...clientLogos].map((client, idx) => (
+                <div className="flex animate-marquee whitespace-nowrap gap-16 md:gap-36">
+                    {[...clientLogos, ...clientLogos, ...clientLogos].map((client, idx) => (
                         <div
                             key={idx}
-                            className="flex items-center justify-center min-w-[150px] md:min-w-[200px]"
+                            className="flex items-center justify-center min-w-[160px] md:min-w-[240px] lg:min-w-[340px] h-18 md:h-24 lg:h-36 group cursor-pointer"
                         >
-                            <span className="text-xl md:text-2xl font-display font-bold text-white/40 hover:text-white/40 transition-colors cursor-default select-none tracking-tighter">
-                                {client.name.toUpperCase()}
-                            </span>
+                            <div className="relative w-full border-2 border-white/50 h-full transition-all duration-500 group-hover:grayscale group-hover:opacity-50">
+                                <Image
+                                    src={client.logo}
+                                    alt={client.name}
+                                    width={400}
+                                    height={300}
+                                    className="object-contain w-full h-full"
+                                />
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -76,3 +86,6 @@ export default function Clients() {
         </section>
     );
 }
+
+
+
