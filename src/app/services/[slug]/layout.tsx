@@ -23,8 +23,9 @@ const SERVICE_META: Record<string, { title: string; description: string }> = {
     },
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const meta = SERVICE_META[params.slug];
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const meta = SERVICE_META[slug];
     return {
         title: meta?.title || "Services | ORIGA Media",
         description: meta?.description || "High-performance marketing and design services by ORIGA Media.",
