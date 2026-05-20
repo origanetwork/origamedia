@@ -104,6 +104,7 @@ export default function About() {
                                 src="/logo/origa.png"
                                 alt="Origa Media Logo"
                                 fill
+                                sizes="(max-width: 768px) 300px, 400px"
                                 className="object-contain opacity-80"
                             />
                              {/* <Image

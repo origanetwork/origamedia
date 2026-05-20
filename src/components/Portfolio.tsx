@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -55,8 +55,14 @@ export default function Portfolio() {
     const [activeIndex, setActiveIndex] = React.useState(0);
     const [progress, setProgress] = React.useState(0);
     const scrollRef = React.useRef<HTMLDivElement>(null);
+    const sectionRef = React.useRef<HTMLDivElement>(null);
+
+    // Pause timer index iterations when works carousel is out of view
+    const isSectionInView = useInView(sectionRef, { once: false, margin: "200px" });
 
     React.useEffect(() => {
+        if (!isSectionInView) return;
+
         const interval = setInterval(() => {
             setProgress((prev) => {
                 if (prev >= 100) {
@@ -68,7 +74,7 @@ export default function Portfolio() {
         }, 100);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [isSectionInView]);
 
     React.useEffect(() => {
         if (scrollRef.current) {
@@ -81,7 +87,7 @@ export default function Portfolio() {
     }, [activeIndex]);
 
     return (
-        <section id="works" className="py-10 md:py-20 bg-white text-black overflow-hidden font-display border-t border-gray-100">
+        <section id="works" ref={sectionRef} className="py-10 md:py-20 bg-white text-black overflow-hidden font-display border-t border-gray-100">
             <div className="w-full">
                 {/* Header Section */}
                 <div className="px-6 md:px-16 mb-10">

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -49,18 +49,25 @@ const rotatingTexts = ["Creative", "Strategic", "Result-Driven"];
 export default function Services() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [textIndex, setTextIndex] = useState(0);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
-    // Rotate the big text every 2 seconds
+    // Pause text rotation cycles when Services section is out of view
+    const isSectionInView = useInView(sectionRef, { once: false, margin: "200px" });
+
+    // Rotate the big text every 2.5 seconds
     useEffect(() => {
+        if (!isSectionInView) return;
+
         const interval = setInterval(() => {
             setTextIndex((prev) => (prev + 1) % rotatingTexts.length);
         }, 2500);
         return () => clearInterval(interval);
-    }, []);
+    }, [isSectionInView]);
 
     return (
         <section
             id="services"
+            ref={sectionRef}
             className="relative w-full bg-white text-black overflow-hidden py-16 md:py-24 border-t border-black/5"
             onMouseLeave={() => setHoveredIndex(null)}
         >

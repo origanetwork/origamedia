@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu as MenuIcon, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
@@ -15,9 +16,19 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  
+  // Initialize isOpen to isHome (true on homepage, false on subpages) to align SSR and initial client hydration.
+  // This completely eliminates Cumulative Layout Shift (CLS) on load while preserving sticky layout document flow.
+  const [isOpen, setIsOpen] = useState(isHome);
 
   useEffect(() => {
+    if (!isHome) {
+      setIsOpen(false);
+      return;
+    }
+
     const handleScroll = () => {
       const isTop = window.scrollY < 50;
       setIsOpen(isTop);
@@ -26,7 +37,7 @@ export default function Header() {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -37,7 +48,7 @@ export default function Header() {
       className="sticky top-0 left-0 w-full z-50 bg-[#141414] text-white overflow-hidden pointer-events-none"
       variants={{
         closed: { height: 80, transition: { type: "spring", stiffness: 300, damping: 30 } },
-        open: { height: "40vh", transition: { type: "spring", stiffness: 100, damping: 20 } },
+        open: { height: "35vh", transition: { type: "spring", stiffness: 100, damping: 20 } },
       }}
     >
       <div className="pointer-events-auto h-full w-full">
@@ -133,7 +144,8 @@ export default function Header() {
                   </motion.button>
                 )}
               </AnimatePresence>
-
+           
+           
               {/* Mobile Menu Icon (Only when closed) */}
               {!isOpen && (
                 <div className="lg:hidden">
@@ -167,6 +179,7 @@ export default function Header() {
                     src="/logo/origa.png"
                     alt="Origa Logo"
                     fill
+                    sizes="(max-width: 768px) 70vw, 500px"
                     className="object-contain"
                     priority
                   />

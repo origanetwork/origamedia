@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { projects, Project } from '@/data/projects';
@@ -9,6 +9,20 @@ import { projects, Project } from '@/data/projects';
 export default function VideoWorkPage() {
     const videoProjects = projects.filter(p => p.type === "video");
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+    const heroRef = React.useRef<HTMLDivElement>(null);
+    const isHeroInView = useInView(heroRef, { once: false, margin: "200px" });
+    const videoRef = React.useRef<HTMLVideoElement>(null);
+
+    React.useEffect(() => {
+        if (videoRef.current) {
+            if (isHeroInView) {
+                videoRef.current.play().catch(() => {});
+            } else {
+                videoRef.current.pause();
+            }
+        }
+    }, [isHeroInView]);
 
     const openProject = (project: Project) => {
         setSelectedProject(project);
@@ -27,9 +41,10 @@ export default function VideoWorkPage() {
     return (
         <main className="min-h-screen bg-black text-white relative overflow-x-clip text-left">
             {/* 1. Cinematic Hero Section */}
-            <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+            <div ref={heroRef} className="relative h-[60vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10" />
                 <video
+                    ref={videoRef}
                     autoPlay
                     muted
                     loop

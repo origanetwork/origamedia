@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Target, Zap, Users, BarChart3, MessageSquare, ArrowUpRight } from "lucide-react";
 
 const reasons = [
@@ -44,16 +44,22 @@ const reasons = [
 
 export default function WhyChooseUs() {
     const [activeIndex, setActiveIndex] = React.useState(0);
+    const sectionRef = React.useRef<HTMLDivElement>(null);
+
+    // Pause mobile slide interval when component is offscreen
+    const isSectionInView = useInView(sectionRef, { once: false, margin: "200px" });
 
     React.useEffect(() => {
+        if (!isSectionInView) return;
+
         const interval = setInterval(() => {
             setActiveIndex((prev) => (prev + 1) % reasons.length);
         }, 3000);
         return () => clearInterval(interval);
-    }, []);
+    }, [isSectionInView]);
 
     return (
-        <section className="relative py-16 md:py-24 bg-black overflow-hidden border-t border-white/5 font-display">
+        <section ref={sectionRef} className="relative py-16 md:py-24 bg-black overflow-hidden border-t border-white/5 font-display">
             {/* Background Decorative Element */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[1000px] h-[1000px] bg-gradient-to-br from-white/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
 
