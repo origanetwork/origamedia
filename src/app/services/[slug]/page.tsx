@@ -88,7 +88,7 @@ const SERVICE_DATA: Record<string, ServiceInfo> = {
         title: "Content Studio",
         tagline: "Infinite Creativity",
         description: "A full-scale production house for photography, writing, and platform-specific assets.",
-        heroImage: "/services/content.jpg",
+        heroImage: "/services/contentt.jpg",
         stats: [
             { label: "Photography", value: "100+" },
             { label: "SEO Keywords", value: "5K+" },

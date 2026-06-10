@@ -19,13 +19,13 @@ const clientLogos: ClientLogo[] = [
     { name: "Kinathiyil", logo: "/partners/kinath.png" },
     { name: "Hilife", logo: "/partners/Hilife.png" },
     { name: "D-dot", logo: "/partners/D-dot.png" },
-    { name: "Pips", logo: "/partners/pips.png" },
+    { name: "Pips", logo: "/partners/pips-white.png" },
     { name: "Dezert", logo: "/partners/dezert.png" },
 ];
 
 export default function Clients() {
     return (
-        <section className="py-16 md:py-24 bg-black overflow-hidden border-t border-white/5">
+        <section id="clients" className="py-16 md:py-24 bg-black overflow-hidden border-t border-white/5">
             <div className="container mx-auto px-6 md:px-16 mb-16 text-center md:text-left">
                 <div className="max-w-3xl mx-auto md:mx-0">
                     <motion.h2

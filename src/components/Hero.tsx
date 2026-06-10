@@ -74,10 +74,10 @@ export default function Hero() {
                             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </Link>
 
-                        <button className="group flex items-center space-x-5 border border-white/20 px-12 py-6 text-sm font-bold tracking-[0.2em] uppercase hover:bg-white/5 transition-all duration-300 active:scale-95">
+                        <Link href="/#works" className="group flex items-center space-x-5 border border-white/20 px-12 py-6 text-sm font-bold tracking-[0.2em] uppercase hover:bg-white/5 transition-all duration-300 active:scale-95">
                             <span className="text-white">View Our Work</span>
                             <div className="w-2 h-2 rounded-full bg-white group-hover:scale-150 transition-all duration-500" />
-                        </button>
+                        </Link>
                     </motion.div>
                 </div>
             </div>

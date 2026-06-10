@@ -15,7 +15,7 @@ const socialLinks = [
 const navLinks = [
     { name: "Services", href: "/#services" },
     { name: "Works", href: "/#works" },
-    { name: "Clients", href: "/#stats" },
+    { name: "Clients", href: "/#clients" },
     { name: "About", href: "/#about" },
     { name: "Contact", href: "/contact" }
 ];
