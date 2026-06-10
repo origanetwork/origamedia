@@ -6,10 +6,10 @@ import Image from "next/image";
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const socialLinks = [
-    { icon: FaFacebookF, href: "#" },
+    { icon: FaFacebookF, href: "https://www.facebook.com/profile.php?id=61589122135176" },
     { icon: FaLinkedinIn, href: "https://www.linkedin.com/company/116784126/admin/dashboard/" },
+    { icon: FaInstagram, href: "https://instagram.com/origamedia" },
     { icon: FaXTwitter, href: "#" },
-    { icon: FaInstagram, href: "https://instagram.com/origamedia" }
 ];
 
 const navLinks = [
