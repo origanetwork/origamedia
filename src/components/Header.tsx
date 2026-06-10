@@ -22,6 +22,14 @@ export default function Header() {
   // Initialize isOpen to isHome (true on homepage, false on subpages) to align SSR and initial client hydration.
   // This completely eliminates Cumulative Layout Shift (CLS) on load while preserving sticky layout document flow.
   const [isOpen, setIsOpen] = useState(isHome);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     if (!isHome) {
@@ -48,7 +56,7 @@ export default function Header() {
       className="sticky top-0 left-0 w-full z-50 bg-[#141414] text-white overflow-hidden pointer-events-none"
       variants={{
         closed: { height: 80, transition: { type: "spring", stiffness: 300, damping: 30 } },
-        open: { height: "35vh", transition: { type: "spring", stiffness: 100, damping: 20 } },
+        open: { height: isMobile ? "100dvh" : "35vh", transition: { type: "spring", stiffness: 100, damping: 20 } },
       }}
     >
       <div className="pointer-events-auto h-full w-full">
@@ -126,37 +134,46 @@ export default function Header() {
                 </motion.div>
               </div>
 
-              {/* Close Icon for Open State */}
-              <AnimatePresence>
-                {isOpen && (
-                  <motion.button
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    onClick={() => {
-                      setIsOpen(false);
-                      window.scrollTo({ top: 150, behavior: 'smooth' });
-                    }}
-                    className="p-2 focus:outline-none z-50 text-white hover:rotate-90 transition-transform duration-300"
-                    aria-label="Close"
-                  >
-                    <X className="w-10 h-10" />
-                  </motion.button>
-                )}
-              </AnimatePresence>
-           
-           
-              {/* Mobile Menu Icon (Only when closed) */}
-              {!isOpen && (
-                <div className="lg:hidden">
-                  <button
-                    onClick={toggleMenu}
-                    className="p-2 focus:outline-none z-50 text-white"
-                  >
-                    <MenuIcon className="w-8 h-8" />
-                  </button>
-                </div>
-              )}
+              {/* Action Icons (Close/Menu) */}
+              <div className="relative flex items-center justify-center w-12 h-12">
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.button
+                      key="close"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      onClick={() => {
+                        setIsOpen(false);
+                        window.scrollTo({ top: 150, behavior: 'smooth' });
+                      }}
+                      className="absolute p-2 focus:outline-none z-50 text-white hover:rotate-90 transition-transform duration-300"
+                      aria-label="Close"
+                    >
+                      <X className="w-10 h-10" />
+                    </motion.button>
+                  )}
+                </AnimatePresence>
+              
+                <AnimatePresence>
+                  {!isOpen && (
+                    <motion.div
+                      key="menu"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      className="absolute lg:hidden"
+                    >
+                      <button
+                        onClick={toggleMenu}
+                        className="p-2 focus:outline-none z-50 text-white"
+                      >
+                        <MenuIcon className="w-8 h-8" />
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </div>
 
@@ -167,13 +184,13 @@ export default function Header() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="flex-1 flex flex-col items-center justify-start w-full pt-2 lg:-mt-16"
+                className="flex-1 flex flex-col items-center justify-center lg:justify-start w-full pb-20 lg:pb-0 lg:pt-2 lg:-mt-16"
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1 }}
-                  className="relative w-full max-w-[70vw] h-[12vh] lg:h-[18vh] mb-2 lg:mb-2"
+                  className="relative w-full max-w-[85vw] md:max-w-[70vw] h-[16vh] md:h-[12vh] lg:h-[18vh] mb-4 lg:mb-2"
                 >
                   <Image
                     src="/logo/origa.png"
@@ -189,20 +206,22 @@ export default function Header() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="mt-4 flex flex-wrap justify-center gap-x-8 gap-y-3 text-[11px] md:text-sm font-bold tracking-[0.3em] uppercase opacity-60 px-4"
+                  className="mt-8 md:mt-4 flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-x-8 gap-y-2 md:gap-y-3 text-[16px] md:text-sm font-bold tracking-[0.3em] uppercase opacity-60 px-4 w-full"
                 >
                   {NAV_LINKS.map((link) => (
                     <Link
                       key={link.name}
                       href={link.href}
-                      className="hover:text-white transition-colors"
+                      onClick={() => setIsOpen(false)}
+                      className="hover:text-white transition-colors py-3 md:py-0 w-full md:w-auto text-center"
                     >
                       {link.name}
                     </Link>
                   ))}
                   <Link
                     href="/contact"
-                    className="hover:text-white transition-colors"
+                    onClick={() => setIsOpen(false)}
+                    className="hover:text-white transition-colors py-3 md:py-0 w-full md:w-auto text-center"
                   >
                     Contact
                   </Link>

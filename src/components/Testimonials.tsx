@@ -58,7 +58,7 @@ export default function Testimonials() {
                             className="group sticky top-28 will-change-transform"
                             style={{ zIndex: idx + 1 }}
                         >
-                            <div className="relative aspect-square overflow-hidden rounded-[2.5rem] border-2 border-white shadow-2xl flex flex-col justify-end p-10">
+                            <div className="relative aspect-[4/5] md:aspect-square overflow-hidden rounded-[2.5rem] border-2 border-white shadow-2xl flex flex-col justify-end p-10">
                                 {/* Image Background */}
                                 <Image
                                     src={testimonial.image}

@@ -13,10 +13,10 @@ const socialLinks = [
 ];
 
 const navLinks = [
-    { name: "Services", href: "#services" },
-    { name: "Works", href: "#works" },
-    { name: "Clients", href: "#stats" },
-    { name: "About", href: "#about" },
+    { name: "Services", href: "/#services" },
+    { name: "Works", href: "/#works" },
+    { name: "Clients", href: "/#stats" },
+    { name: "About", href: "/#about" },
     { name: "Contact", href: "/contact" }
 ];
 

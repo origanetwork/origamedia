@@ -76,7 +76,7 @@ export default function OurApproach() {
                                 zIndex: index + 1
                             }}
                         >
-                            <div className="relative aspect-square overflow-hidden rounded-[2.5rem] bg-[#0c0c0c] border-2 border-white shadow-2xl flex flex-col items-center justify-center p-10">
+                            <div className="relative overflow-hidden rounded-[2.5rem] bg-[#0c0c0c] border-2 border-white shadow-2xl flex flex-col items-center justify-center p-12 md:p-10 md:aspect-square">
                                 {/* Simplified Background Background */}
                                 <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-5`} />
                                 <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/60" />

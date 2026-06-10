@@ -217,7 +217,7 @@ export default function ServiceDetail() {
                         </p>
 
                         {/* Stats Logic */}
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-16 pt-12 border-t border-white/10 max-w-xl">
+                        <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-8 mt-16 pt-12 border-t border-white/10 max-w-xl">
                             {service.stats.map((stat, i) => (
                                 <motion.div
                                     key={i}
@@ -225,8 +225,8 @@ export default function ServiceDetail() {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: 0.5 + (i * 0.1) }}
                                 >
-                                    <p className="text-[12px] uppercase tracking-[0.2em] text-white/50 mb-2">{stat.label}</p>
-                                    <p className="text-2xl md:text-4xl font-display font-medium text-white">{stat.value}</p>
+                                    <p className="text-[9px] md:text-[12px] uppercase tracking-[0.1em] md:tracking-[0.2em] text-white/50 mb-1 md:mb-2 leading-tight pr-1 md:pr-0">{stat.label}</p>
+                                    <p className="text-xl sm:text-2xl md:text-4xl font-display font-medium text-white">{stat.value}</p>
                                 </motion.div>
                             ))}
                         </div>
