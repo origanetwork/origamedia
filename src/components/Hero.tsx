@@ -17,12 +17,12 @@ export default function Hero() {
     const title = "We Build Brands That Perform.";
     const words = title.split(" ");
     const sectionRef = useRef<HTMLDivElement>(null);
-    
+
     // Check if the Hero section is currently visible on-screen
     const isInView = useInView(sectionRef, { once: false, margin: "200px" });
 
     return (
-        <section ref={sectionRef} className="relative w-full h-[85dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-black text-white px-6 group/hero">
+        <section ref={sectionRef} className="relative w-full h-[85dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-black text-white px-6 group/hero pt-24 md:pt-0">
             {/* 3D Hybrid Concept Layer - Loaded Asynchronously */}
             <div className="absolute inset-0 z-0">
                 <Hero3D isInView={isInView} />
