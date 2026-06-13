@@ -22,7 +22,7 @@ export default function Hero() {
     const isInView = useInView(sectionRef, { once: false, margin: "200px" });
 
     return (
-        <section ref={sectionRef} className="relative w-full h-[85dvh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-black text-white px-6 group/hero pt-24 md:pt-0">
+        <section ref={sectionRef} className="relative w-full min-h-[100svh] md:h-screen flex flex-col items-center justify-end pb-24 pt-32 md:justify-center md:pb-0 md:pt-0 overflow-hidden bg-black text-white px-6 group/hero">
             {/* 3D Hybrid Concept Layer - Loaded Asynchronously */}
             <div className="absolute inset-0 z-0">
                 <Hero3D isInView={isInView} />
