@@ -38,11 +38,18 @@ export default function Header() {
     }
 
     const handleScroll = () => {
-      const isTop = window.scrollY < 50;
-      setIsOpen(isTop);
+      if (window.innerWidth >= 1024) {
+        const isTop = window.scrollY < 50;
+        setIsOpen(isTop);
+      }
     };
 
-    handleScroll();
+    if (window.innerWidth < 1024) {
+      setIsOpen(false);
+    } else {
+      handleScroll();
+    }
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHome]);

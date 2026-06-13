@@ -31,7 +31,7 @@ export default function Hero() {
             {/* Content Layer */}
             <div className="relative z-10 container mx-auto text-center max-w-5xl">
                 <div className="space-y-12">
-                    <h1 className="text-5xl md:text-8xl font-display font-medium leading-[1] tracking-tight text-white flex flex-wrap justify-center overflow-hidden">
+                    <h1 className="text-5xl md:text-8xl font-display font-medium leading-[1.1] md:leading-[1] py-2 md:py-0 tracking-tight text-white flex flex-wrap justify-center overflow-hidden">
                         {words.map((word, i) => (
                             <motion.span
                                 key={i}
