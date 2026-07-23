@@ -44,8 +44,11 @@ export default function AllWorkPage() {
                     </div>
 
                     <div className="flex flex-col items-center md:items-end gap-8">
-                        <p className="text-xl text-white/50 font-light max-w-sm ml-auto leading-relaxed">
-                            A curated archive of brand transformations and cinematic narratives.
+                        <p className="text-xl text-white/50 font-light max-w-sm ml-auto leading-relaxed mb-4">
+                            A curated archive of brand transformations and cinematic narratives. Explore our comprehensive portfolio showcasing cutting-edge digital marketing, branding, and high-quality video production.
+                        </p>
+                        <p className="text-sm text-white/40 font-light max-w-sm ml-auto leading-relaxed">
+                            At ORIGA Media, we blend creativity with data-driven strategy to deliver measurable results. Browse through our diverse projects to see how we help businesses elevate their visual identity and connect with their audience.
                         </p>
                     </div>
                 </div>

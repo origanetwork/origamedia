@@ -78,8 +78,11 @@ export default function ContactPage() {
                                     Reach Out <br />
                                     <span className="text-gray-500 italic">to Us.</span>
                                 </h1>
-                                <p className="text-gray-400 text-lg max-w-sm leading-relaxed">
-                                    Have a project in mind or just want to say hello? We&apos;d love to hear from you.
+                                <p className="text-gray-400 text-lg max-w-sm leading-relaxed mb-4">
+                                    Have a project in mind or just want to say hello? We&apos;d love to hear from you. Whether you need expert digital marketing, highly creative graphic design, or professional video creation, ORIGA Media is here to partner with you and drive measurable growth.
+                                </p>
+                                <p className="text-gray-400 text-sm max-w-sm leading-relaxed">
+                                    Our team specializes in strategy, branding, and performance campaigns tailored to elevate your online presence and engage your target audience. Contact us today to discuss your next big idea.
                                 </p>
                             </div>
 
@@ -108,8 +111,8 @@ export default function ContactPage() {
                             <div className="flex gap-4 pt-4 mt-auto">
                                 {[
                                     { icon: FaInstagram, href: "https://instagram.com/origamedia" },
-                                    { icon: FaLinkedinIn, href: "#" },
-                                    { icon: FaFacebookF, href: "#" }
+                                    { icon: FaLinkedinIn, href: "https://www.linkedin.com/company/116784126/admin/dashboard/" },
+                                    { icon: FaFacebookF, href: "https://www.facebook.com/profile.php?id=61589122135176" }
                                 ].map((social, idx) => (
                                     <a
                                         key={idx}

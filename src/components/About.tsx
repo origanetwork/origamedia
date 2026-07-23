@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
 const containerVariants: Variants = {
@@ -90,6 +90,7 @@ export default function About() {
                             >
                                 We combine performance marketing, creative storytelling, and production excellence to deliver results that matter—leads, visibility, and brand authority.
                                 From startups to established brands, we partner with clients to craft strategies that are not just visually strong, but <span className="text-white italic">commercially effective.</span>
+                                Ready to scale your brand? <Link href="/contact" className="text-white font-medium underline underline-offset-4 hover:text-gray-300">Get in touch</Link> with us today.
                             </motion.p>
                         </div>
                     </div>
